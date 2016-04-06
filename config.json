@@ -1,0 +1,13 @@
+{
+  "baseMarkup": 0.05,
+  "workerMarkup": 0.012,
+  "materialMap": {
+    "drugs": "pharmaceuticals",
+    "chicken": "food"
+  },
+  "materialMarkup": {
+    "pharmaceuticals": 0.075,
+    "food": 0.13,
+    "electronics": 0.02
+  }
+}
