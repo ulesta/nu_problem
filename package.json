@@ -1,0 +1,22 @@
+{
+  "name": "nu_problem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ulesta/nu_problem.git"
+  },
+  "author": "Justin Cuaresma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ulesta/nu_problem/issues"
+  },
+  "homepage": "https://github.com/ulesta/nu_problem#readme",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
