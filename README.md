@@ -1,4 +1,4 @@
 # nu_problem
 
-To Run tests: 
+To run tests: 
 npm test
