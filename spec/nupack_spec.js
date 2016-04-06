@@ -137,3 +137,65 @@ describe('App throws Errors whenever supplied with negative inputs', function ()
         }).toThrow(new Error('Invalid number of workers!'));
     });
 });
+
+describe('App should change output based on configurations', function () {
+    it('should output the same amount', function () {
+        nupack.init({
+            config: {
+                "baseMarkup": 0.0,
+                "workerMarkup": 0.0,
+                "materialMap": {
+                    "drugs": "pharmaceuticals",
+                    "chicken": "food"
+                },
+                "materialMarkup": {
+                    "pharmaceuticals": 0.075,
+                    "food": 0.13,
+                    "electronics": 0.02
+                }
+            },
+            price: 12456.95,
+            numWorkers: 4,
+            category: 'books'
+        });
+
+        expect(nupack.getEstimate()).toBe('$12456.95');
+    });
+
+    it('should output as book now has a markup or 10%: $120', function () {
+        nupack.init({
+            config: {
+                "baseMarkup": 0.0,
+                "workerMarkup": 0.01,
+                "materialMap": {
+                    "drugs": "pharmaceuticals",
+                    "chicken": "food"
+                },
+                "materialMarkup": {
+                    "pharmaceuticals": 0.075,
+                    "food": 0.13,
+                    "electronics": 0.02,
+                    "books": 0.1
+                }
+            },
+            price: 100,
+            numWorkers: 10,
+            category: 'books'
+        });
+
+        expect(nupack.getEstimate()).toBe('$120');
+    });
+
+    it('should gracefully fill the gaps with default values if not specified in config obj', function () {
+        nupack.init({
+            config: {
+                "workerMarkup": 0.01
+            },
+            price: 100,
+            numWorkers: 10,
+            category: 'books'
+        });
+
+        expect(nupack.getEstimate()).toBe('$115.5');
+    });
+});
